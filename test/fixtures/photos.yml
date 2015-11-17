@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  upload_date: 2015-11-17 17:06:23
+  long: MyString
+  lat: MyString
+
+two:
+  user_id: 
+  upload_date: 2015-11-17 17:06:23
+  long: MyString
+  lat: MyString
