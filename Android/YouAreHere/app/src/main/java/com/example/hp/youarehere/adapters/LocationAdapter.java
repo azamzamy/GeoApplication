@@ -44,7 +44,8 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         if (position >3 ) {
             holder.image.setImageResource(R.drawable.background);
         }
-        if (position == 0) holder.image.setImageResource(R.drawable.test0);
+
+        else if (position == 0) holder.image.setImageResource(R.drawable.test0);
         else if (position == 1) holder.image.setImageResource(R.drawable.test1);
         else if (position == 2) holder.image.setImageResource(R.drawable.test2);
         else if (position == 3) holder.image.setImageResource(R.drawable.test3);
