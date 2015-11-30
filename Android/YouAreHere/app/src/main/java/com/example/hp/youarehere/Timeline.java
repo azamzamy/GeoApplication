@@ -1,6 +1,7 @@
 package com.example.hp.youarehere;
 
 import android.content.Context;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -22,6 +23,9 @@ public class Timeline extends AppCompatActivity {
         timeLineFragmentsAdapter = new TimeLineFragmentsAdapter(getSupportFragmentManager(), 2,context);
         viewPager.setAdapter(timeLineFragmentsAdapter);
         viewPager.setCurrentItem(0);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 }

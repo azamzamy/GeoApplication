@@ -15,6 +15,7 @@ import com.example.hp.youarehere.fragments.LocationBasedFragment;
 public class TimeLineFragmentsAdapter extends FragmentStatePagerAdapter {
 
     int count;
+    private String tabTitles[] = new String[] {"Home", "Friends"};
 
     public TimeLineFragmentsAdapter(android.support.v4.app.FragmentManager fm, int count, Context context) {
         super(fm);
@@ -32,5 +33,11 @@ public class TimeLineFragmentsAdapter extends FragmentStatePagerAdapter {
 
         //return new PlanDetailsPageFragment(data.get(arg0).getFirst(),data.get(arg0).getSecond(),arg0, app, arg0, planPager);
         return new LocationBasedFragment();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        // Generate title based on item position
+        return tabTitles[position];
     }
 }
