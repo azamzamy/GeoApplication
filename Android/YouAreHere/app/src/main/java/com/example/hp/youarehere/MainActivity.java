@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         signInButton = (RelativeLayout) findViewById(R.id.sign_in_button);
 
+
+
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

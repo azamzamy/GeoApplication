@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+ <ImageView
+android:id="@+id/logo_image"
+android:layout_width="100dp"
+android:layout_height="200dp"
+android:layout_centerInParent="true"
+android:src="@drawable/logo"/>
+    <ImageView
+        android:id="@+id/Camera_icon"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/logo_image"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/camera"/>
+
+    <TextView
+        android:id="@+id/username_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#A62BA2"
+        android:text="Profile"
+        android:layout_below="@+id/logo_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:id="@+id/TimeLine_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#A62BA2"
+        android:text="TimeLine"
+        android:layout_below="@+id/logo_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/Explore_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#A62BA2"
+        android:text="Explore"
+        android:layout_below="@+id/logo_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:id="@+id/Friends_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#A62BA2"
+        android:text="Friends"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="normal|bold|italic"
+        android:layout_below="@+id/logo_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+    <RelativeLayout
+        android:id="@+id/log_out_button"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="#551F55"
+        android:layout_below="@+id/Friends_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+    <TextView
+        android:id="@+id/Logout_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
