@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.example.hp.youarehere.fragments.LocationBasedFragment;
+import com.example.hp.youarehere.fragments.MenuFragment;
 
 /**
  * Created by ahmedtarek on 11/29/15.
@@ -32,6 +33,10 @@ public class TimeLineFragmentsAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int arg0) {
 
         //return new PlanDetailsPageFragment(data.get(arg0).getFirst(),data.get(arg0).getSecond(),arg0, app, arg0, planPager);
+        switch (arg0) {
+            case 0: return new LocationBasedFragment();
+            case 1: return new LocationBasedFragment();
+        }
         return new LocationBasedFragment();
     }
 
