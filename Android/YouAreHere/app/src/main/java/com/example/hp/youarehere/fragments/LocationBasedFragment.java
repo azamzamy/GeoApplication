@@ -4,13 +4,12 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hp.youarehere.R;
-import com.example.hp.youarehere.adapters.LocationAdapter;
+import com.example.hp.youarehere.adapters.ImagesAdapter;
 import com.example.hp.youarehere.utilities.Post;
 
 /**
@@ -21,7 +20,7 @@ public class LocationBasedFragment extends Fragment {
 
     // Location-based RecyclerView stuff
     RecyclerView locationRecyclerView;
-    LocationAdapter locationAdapter;
+    ImagesAdapter imagesAdapter;
     LinearLayoutManager locationLinearLayoutManager;
     Post[] locationPosts;
     @Override
@@ -37,9 +36,9 @@ public class LocationBasedFragment extends Fragment {
             locationPosts[i] = p;
         }
         locationRecyclerView = (RecyclerView) rootView.findViewById(R.id.location_based_recycler_view);
-        locationAdapter = new LocationAdapter(locationPosts, getContext());
+        imagesAdapter = new ImagesAdapter(locationPosts, getContext(), 0);
         locationLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        locationRecyclerView.setAdapter(locationAdapter);
+        locationRecyclerView.setAdapter(imagesAdapter);
         locationRecyclerView.setLayoutManager(locationLinearLayoutManager);
 
         return rootView;

@@ -11,25 +11,28 @@ import android.widget.TextView;
 import com.example.hp.youarehere.R;
 import com.example.hp.youarehere.utilities.Post;
 
-import org.w3c.dom.Text;
-
 /**
  * Created by ahmedtarek on 11/30/15.
  */
-public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
+public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationViewHolder> {
 
     Post[] items;
     Context context;
+    int version;
 
-    public LocationAdapter(Post[] items, Context context) {
+    public ImagesAdapter(Post[] items, Context context, int version) {
+        this.version = version;
         this.items = items;
         this.context = context;
     }
 
     @Override
     public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.location_recycler_view_item, parent, false);
-
+        View view = null;
+        if (version == 0)
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.location_recycler_view_item, parent, false);
+        else
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.profile_recycler_view_item, parent, false);
         return new LocationViewHolder(view);
     }
 
@@ -50,8 +53,11 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         else if (position == 2) holder.image.setImageResource(R.drawable.test2);
         else if (position == 3) holder.image.setImageResource(R.drawable.test3);
 
-        holder.location.setText("Rome");
-        holder.userName.setText("Ahmed Tarek");
+        if (version == 0) {
+            holder.location.setText("Rome");
+            holder.userName.setText("Ahmed Tarek");
+        }
+
     }
 
     class LocationViewHolder extends RecyclerView.ViewHolder {
