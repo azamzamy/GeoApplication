@@ -18,5 +18,10 @@
         android:id="@+id/image_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/comment_input"
+        android:layout_width="200dp"
+        android:layout_height="10dp"
+        android:text="add a comment"/>
 
 </LinearLayout>
