@@ -2,14 +2,9 @@ package com.example.hp.youarehere;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,30 +12,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.hp.youarehere.adapters.ImagesAdapter;
 import com.example.hp.youarehere.adapters.TimeLineFragmentsAdapter;
-import com.example.hp.youarehere.utilities.Post;
 
-public class Profile extends AppCompatActivity {
 
-    RecyclerView profileRecyclerView;
-    ImagesAdapter profileAdapter;
-    StaggeredGridLayoutManager profileGridLayoutManager;
-    Post[] posts;
-    ViewPager viewPager;
-    TextView profileName;
-    TextView profileInfo;
-    ImageView menuButton;
+public class Settings extends ActionBarActivity {
+
+
     Context context;
     TimeLineFragmentsAdapter timeLineFragmentsAdapter;
     DrawerLayout drawerLayout;
+    ImageView menuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_settings);
         context = this;
-
 
         TextView profile = (TextView) findViewById(R.id.profile_text);
 
@@ -98,28 +85,28 @@ public class Profile extends AppCompatActivity {
         });
 
 
-
-        posts = new Post[8];
-        for (int i=0; i<posts.length; i++) {
-            Post p = new Post(i+"","","");
-            posts[i] = p;
-        }
-
-        profileRecyclerView = (RecyclerView) findViewById(R.id.profile_recycler_view);
-        profileAdapter = new ImagesAdapter(posts, context, 1);
-        profileGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        profileRecyclerView.setAdapter(profileAdapter);
-        profileRecyclerView.setLayoutManager(profileGridLayoutManager);
-
-
-        // Text Shit
-        profileInfo = (TextView) findViewById(R.id.profile_info);
-        profileName = (TextView) findViewById(R.id.profile_name);
-
-        profileName.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
-        profileInfo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
-
-
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

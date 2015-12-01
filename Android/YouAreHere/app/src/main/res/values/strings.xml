@@ -9,6 +9,7 @@
     <string name="title_activity_friend_profile">FriendProfile</string>
     <string name="title_activity_add_friends">AddFriends</string>
     <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_settings">Settings</string>
 
 
 </resources>

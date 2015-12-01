@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Friends.class);
+                Intent intent = new Intent(context, Timeline.class);
                 startActivity(intent);
             }
         });

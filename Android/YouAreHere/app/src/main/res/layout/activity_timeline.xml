@@ -89,6 +89,17 @@
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
+                android:id="@+id/Explore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
                 android:id="@+id/profile_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,6 +110,7 @@
                 android:layout_gravity="center_horizontal"
                 />
             <TextView
+                android:id="@+id/Friends"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Friends"
@@ -108,18 +120,10 @@
                 android:layout_gravity="center_horizontal"
                 />
             <TextView
+                android:id="@+id/Settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Settings"
-                android:textColor="#FFFFFF"
-                android:textSize="26dp"
-                android:layout_marginBottom="25dp"
-                android:layout_gravity="center_horizontal"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sign Out"
                 android:textColor="#FFFFFF"
                 android:textSize="26dp"
                 android:layout_marginBottom="25dp"
