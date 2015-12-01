@@ -96,6 +96,17 @@
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
+                android:id="@+id/post_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post A photo"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
                 android:id="@+id/Explore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

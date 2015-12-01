@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hp.youarehere.adapters.TimeLineFragmentsAdapter;
 
@@ -92,7 +93,22 @@ public class Timeline extends AppCompatActivity {
             }
         });
 
+        TextView postPhoto= (TextView) findViewById(R.id.post_photo);
 
 
+        postPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 100);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Toast.makeText(context, "An Image have been selected", Toast.LENGTH_LONG).show();
     }
 }
