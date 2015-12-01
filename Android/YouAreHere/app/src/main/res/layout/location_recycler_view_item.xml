@@ -27,17 +27,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:id="@+id/friendname"
-        android:text = "Hend Hesham"
+    <ListView
+        android:id="@+id/commentsList"
         android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
-    <TextView
-        android:id="@+id/friendcomment"
-        android:layout_width="match_parent"
-        android:text="This is awesome!"
-        android:layout_height="40dp" />
-
+        android:layout_height="wrap_content">
+        </ListView>
 
 </LinearLayout>

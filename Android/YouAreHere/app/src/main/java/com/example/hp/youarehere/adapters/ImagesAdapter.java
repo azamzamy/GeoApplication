@@ -29,6 +29,14 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
     int version;
     Activity activity;
 
+    ListView commentsList;
+    private CommentsListAdapter adapter;
+    private int[] images = new int[]{R.drawable.ahmedtarek, R.drawable.hend, R.drawable.kamel};
+    private String [] names = {"Ahmed Tarek", "Hend Hesham", "Abdelrahman Kamel"};
+    private String [] commentValues = {"Awesome", "7ilw awi bgd", "yalahwyyy"};
+    private ArrayList<String> friendNames;
+    private ArrayList<Integer> friendImages;
+    private ArrayList<String> comments;
 
 
     public ImagesAdapter(Post[] items, Context context, int version, Activity activity) {
@@ -57,6 +65,24 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
     public void onBindViewHolder(LocationViewHolder holder, int position) {
 
 
+        friendNames = new ArrayList<String>();
+
+        friendImages = new ArrayList<Integer>();
+        comments = new ArrayList<String>();
+
+        int i = 2;
+        while (i >= 0) {
+            friendNames.add(names[i]);
+            friendImages.add(images[i]);
+            comments.add(commentValues[i]);
+            i--;
+        }
+
+
+        CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
+
+        holder.commentsList.setAdapter(adapter2);
+
         if (position >3 ) {
             holder.image.setImageResource(R.drawable.background);
         }
@@ -77,17 +103,14 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
     class LocationViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView userName, location;
-        TextView commentOwner;
-        TextView comment;
+        ListView commentsList;
 
         public LocationViewHolder(View itemview) {
             super(itemview);
             image = (ImageView) itemview.findViewById(R.id.image_post);
             userName = (TextView) itemview.findViewById(R.id.user_name);
             location = (TextView) itemview.findViewById(R.id.location);
-            commentOwner = (TextView) itemview.findViewById(R.id.friendname);
-            comment = (TextView) itemview.findViewById(R.id.friendcomment);
-
+            commentsList = (ListView) itemview.findViewById(R.id.commentsList);
 
             if (version ==0) {
                 userName.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
