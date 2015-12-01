@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.hp.youarehere.R;
 import com.example.hp.youarehere.adapters.ImagesAdapter;
 import com.example.hp.youarehere.utilities.Post;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by ahmedtarek on 11/29/15.
@@ -40,6 +41,8 @@ public class LocationBasedFragment extends Fragment {
         locationLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         locationRecyclerView.setAdapter(imagesAdapter);
         locationRecyclerView.setLayoutManager(locationLinearLayoutManager);
+
+
 
         return rootView;
     }
