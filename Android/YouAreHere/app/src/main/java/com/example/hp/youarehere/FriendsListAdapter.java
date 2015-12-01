@@ -73,7 +73,7 @@ public class FriendsListAdapter extends ArrayAdapter<String>{
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, FriendProfile.class);
+                Intent intent = new Intent(context, Profile.class);
 
                 // ListView Clicked item value
                 String  itemValue    = (String) friendName.get(position);

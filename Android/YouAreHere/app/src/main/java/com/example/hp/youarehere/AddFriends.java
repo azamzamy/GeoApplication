@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 
 public class AddFriends extends ActionBarActivity {
@@ -12,6 +13,12 @@ public class AddFriends extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_friends);
+
+
+
+        EditText AddFriend = (EditText) findViewById(R.id.friendName);
+        AddFriend.setHint("Add by username");
+
     }
 
 
