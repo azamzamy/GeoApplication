@@ -1,19 +1,27 @@
 package com.example.hp.youarehere;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.hp.youarehere.adapters.TimeLineFragmentsAdapter;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,12 +37,19 @@ public class Friends extends ActionBarActivity {
     private String [] names = {"Ahmed Tarek", "Hend Hesham", "Abdelrahman Kamel", "Zamzamy"};
     private ArrayList<String> friendNames;
     private ArrayList<Integer> friendImages;
+    Context context;
+
+
+    TimeLineFragmentsAdapter timeLineFragmentsAdapter;
+    TextView profile;
+    ImageView menuButton;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
-
+        context = this;
 
         // Get ListView object from xml
         friends = (ListView) findViewById(R.id.friends);
@@ -61,6 +76,68 @@ public class Friends extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
+
+
+        TextView profile = (TextView) findViewById(R.id.profile_text);
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Profile.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView friend = (TextView) findViewById(R.id.Friends);
+
+
+        friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Friends.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView Setting = (TextView) findViewById(R.id.Settings);
+
+
+        Setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Settings.class);
+                startActivity(intent);
+            }
+        });
+
+
+        TextView Explore= (TextView) findViewById(R.id.Explore);
+
+
+        Explore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Timeline.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        menuButton = (ImageView) findViewById(R.id.menu_button_image);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });
+
+
 
     }
 

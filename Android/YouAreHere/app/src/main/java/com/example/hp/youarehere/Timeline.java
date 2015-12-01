@@ -58,6 +58,41 @@ public class Timeline extends AppCompatActivity {
             }
         });
 
+        TextView friend = (TextView) findViewById(R.id.Friends);
+
+
+        friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Friends.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView Setting = (TextView) findViewById(R.id.Settings);
+
+
+        Setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Settings.class);
+                startActivity(intent);
+            }
+        });
+
+
+        TextView Explore= (TextView) findViewById(R.id.Explore);
+
+
+        Explore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Timeline.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 }
