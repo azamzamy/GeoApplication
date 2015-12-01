@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/mylistlayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:weightSum="1">
+
+
+    <ImageView
+        android:id="@+id/friendimage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"/>
+
+
+    <TextView
+        android:id="@+id/friendname"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingTop="5dp"
+        android:longClickable="false"
+        android:linksClickable="false"
+        android:textAlignment="center" />
+
+    <ImageView
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/delete"
+        android:id="@+id/unfriend"
+        android:layout_gravity="right"
+        android:background="@android:color/transparent"
+
+        />
+
+</LinearLayout>

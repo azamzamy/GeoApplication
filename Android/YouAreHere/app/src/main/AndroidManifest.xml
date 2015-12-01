@@ -26,6 +26,22 @@
             android:name=".Profile"
             android:label="@string/title_activity_profile" >
         </activity>
+        <activity
+            android:name=".MyProfile"
+            android:label="@string/title_activity_my_profile" >
+        </activity>
+        <activity
+            android:name=".Friends"
+            android:label="@string/title_activity_friends" >
+        </activity>
+        <activity
+            android:name=".FriendProfile"
+            android:label="@string/title_activity_friend_profile" >
+        </activity>
+        <activity
+            android:name=".AddFriends"
+            android:label="@string/title_activity_add_friends" >
+        </activity>
     </application>
 
 </manifest>
