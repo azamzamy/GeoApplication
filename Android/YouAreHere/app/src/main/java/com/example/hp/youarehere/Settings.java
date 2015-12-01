@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,15 @@ public class Settings extends ActionBarActivity {
         setContentView(R.layout.activity_settings);
         context = this;
 
+
+        Button signout = (Button) findViewById(R.id.signout);
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         TextView profile = (TextView) findViewById(R.id.profile_text);
 
         profile.setOnClickListener(new View.OnClickListener() {
