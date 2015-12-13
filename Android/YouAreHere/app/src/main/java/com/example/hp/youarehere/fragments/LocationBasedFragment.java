@@ -1,5 +1,6 @@
 package com.example.hp.youarehere.fragments;
 
+import android.content.Context;
 import android.location.Location;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.hp.youarehere.CommentsListAdapter;
@@ -31,12 +34,13 @@ public class LocationBasedFragment extends Fragment {
     LinearLayoutManager locationLinearLayoutManager;
     Post[] locationPosts;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
 
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.location_based_fragment, container, false);
-
+        final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.location_based_fragment, container, false);
 
         locationPosts = new Post[8];
         for (int i=0; i<locationPosts.length; i++) {
@@ -48,6 +52,9 @@ public class LocationBasedFragment extends Fragment {
         locationLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         locationRecyclerView.setAdapter(imagesAdapter);
         locationRecyclerView.setLayoutManager(locationLinearLayoutManager);
+
+
+
 
 
 

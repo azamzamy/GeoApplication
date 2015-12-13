@@ -11,4 +11,10 @@
         android:layout_width="170dp"
         android:layout_height="170dp" />
 
+    <ListView
+        android:id="@+id/commentsList"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+    </ListView>
+
 </LinearLayout>

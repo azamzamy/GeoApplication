@@ -45,15 +45,15 @@ public class CommentsListAdapter extends ArrayAdapter<String>{
         this.friendImage = imgId;
     }
 
-    public CommentsListAdapter(Activity context, ArrayList<String> itemName, ArrayList<Integer> imgId, ArrayList<String> comments) {
-        super(context, R.layout.mylist, itemName);
+    public CommentsListAdapter(Activity context, ArrayList<String> itemName, ArrayList<Integer> imgId, ArrayList<String> comment) {
+        super(context, R.layout.comment, itemName);
         this.context = context;
         this.friendName = itemName;
         this.friendImage = imgId;
         tempImgid = new ArrayList<Integer>();
         tempItemname = new ArrayList<String>();
         tempImgid.addAll(imgId);
-        this.comments.addAll(comments);
+        comments.addAll(comment);
         tempItemname.addAll(itemName);
     }
 
@@ -62,9 +62,11 @@ public class CommentsListAdapter extends ArrayAdapter<String>{
         View rowView = inflater.inflate(R.layout.comment, null, true);
         TextView txtTitle = (TextView) rowView.findViewById(R.id.friendname);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.friendimage);
+        TextView comm = (TextView) rowView.findViewById(R.id.comment);
 
         txtTitle.setText(friendName.get(position));
         imageView.setImageResource(friendImage.get(position));
+        comm.setText(comments.get(position));
 
         return rowView;
     }

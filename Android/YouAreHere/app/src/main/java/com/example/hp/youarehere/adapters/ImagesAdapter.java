@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.example.hp.youarehere.CommentsListAdapter;
 import com.example.hp.youarehere.FriendsListAdapter;
 import com.example.hp.youarehere.R;
+import com.example.hp.youarehere.Timeline;
 import com.example.hp.youarehere.utilities.Post;
 import com.squareup.picasso.Picasso;
 
@@ -27,16 +30,16 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
     Post[] items;
     Context context;
     int version;
-    Activity activity;
+    final Activity activity;
 
     ListView commentsList;
     private CommentsListAdapter adapter;
-    private int[] images = new int[]{R.drawable.ahmedtarek, R.drawable.hend, R.drawable.kamel};
-    private String [] names = {"Ahmed Tarek", "Hend Hesham", "Abdelrahman Kamel"};
-    private String [] commentValues = {"Awesome", "7ilw awi bgd", "yalahwyyy"};
-    private ArrayList<String> friendNames;
-    private ArrayList<Integer> friendImages;
-    private ArrayList<String> comments;
+    private int[] images = new int[]{R.drawable.ahmedtarek, R.drawable.hend};
+    private String [] names = {"Ahmed Tarek", "Hend Hesham"};
+    private String [] commentValues = {"Awesome", "7ilw awi bgd"};
+    public ArrayList<String> friendNames;
+    public ArrayList<Integer> friendImages;
+    public ArrayList<String> comments;
 
 
     public ImagesAdapter(Post[] items, Context context, int version, Activity activity) {
@@ -62,7 +65,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
     }
 
     @Override
-    public void onBindViewHolder(LocationViewHolder holder, int position) {
+    public void onBindViewHolder(final LocationViewHolder holder, int position) {
 
 
         friendNames = new ArrayList<String>();
@@ -70,7 +73,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
         friendImages = new ArrayList<Integer>();
         comments = new ArrayList<String>();
 
-        int i = 2;
+        int i = names.length-1;
         while (i >= 0) {
             friendNames.add(names[i]);
             friendImages.add(images[i]);
@@ -79,7 +82,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
         }
 
 
-        CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
+        final CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
 
         holder.commentsList.setAdapter(adapter2);
 
@@ -98,15 +101,42 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
         }
 
 
+        holder.postButton.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+
+                comments.add(holder.post.getText().toString());
+                friendNames.add("Zamzamy");
+                friendImages.add(R.drawable.zamzamy);
+
+                CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
+
+                holder.commentsList.setAdapter(adapter2);
+                adapter2.notifyDataSetChanged();
+
+            }
+        });
+
+
+
+
+
     }
 
     class LocationViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView userName, location;
         ListView commentsList;
-
-        public LocationViewHolder(View itemview) {
+        EditText post;
+        final Button postButton;
+        public LocationViewHolder(final View itemview) {
             super(itemview);
+
+            post = (EditText) itemview.findViewById(R.id.post);
+            postButton = (Button)  itemview.findViewById(R.id.postbutton);
+
             image = (ImageView) itemview.findViewById(R.id.image_post);
             userName = (TextView) itemview.findViewById(R.id.user_name);
             location = (TextView) itemview.findViewById(R.id.location);
@@ -116,6 +146,10 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
                 userName.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
                 location.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
             }
+
+
+
+
 
         }
     }
