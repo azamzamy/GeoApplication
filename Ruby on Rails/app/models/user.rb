@@ -15,9 +15,11 @@ has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 	validates :name, length: { minimum: 2 }
 	validate :that_born_on_is_not_in_the_future
 
-	 def that_born_on_is_not_in_the_future
-	 	self.errors.add :yob, 'is in the future' 
-	 unless self.yob <= Date.today
+	 # def that_born_on_is_not_in_the_future
+	 # 	self.errors.add :yob, 'is in the future' 
+	 # unless self.yob <= Date.today
 
 
 end
+
+
