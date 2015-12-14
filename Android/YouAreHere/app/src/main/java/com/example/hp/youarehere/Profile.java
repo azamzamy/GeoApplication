@@ -117,7 +117,7 @@ public class Profile extends AppCompatActivity {
         }
 
         profileRecyclerView = (RecyclerView) findViewById(R.id.profile_recycler_view);
-        profileAdapter = new ImagesAdapter(posts, context, 1);
+        profileAdapter = new ImagesAdapter(posts, context, 1, Profile.this);
         profileGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         profileRecyclerView.setAdapter(profileAdapter);
         profileRecyclerView.setLayoutManager(profileGridLayoutManager);

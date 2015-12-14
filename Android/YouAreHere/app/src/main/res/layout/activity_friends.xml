@@ -25,9 +25,12 @@
     android:layout_width="match_parent"
     android:layout_height="30dp"
     android:id="@+id/AddFriends"
+    android:text="Add Friends"
+    android:textSize="30dp"
     android:layout_marginTop="20dp"
     android:clickable="true"
-    android:layout_gravity="top" />
+    android:layout_gravity="top"
+    android:gravity="center"/>
 
         <ListView
             android:layout_width="wrap_content"
@@ -35,7 +38,7 @@
             android:id="@+id/friends"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="80dp"
             android:layout_gravity="top" />
 
         <ImageView
