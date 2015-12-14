@@ -1,0 +1,28 @@
+= form_for @product do |f|
+  = f.label :name
+  %br/
+  = f.text_field :name
+  
+  %br/
+  
+  = f.label :price
+  %br/
+  = f.text_field :price
+  
+  %br/
+  
+  = f.label :image_url
+  %br/
+  = f.text_field :image_url
+  
+  %br/
+
+  = f.label :stock
+  %br/
+  = f.text_field :stock
+  
+  %br/
+  
+  = f.submit
+  or
+  = link_to 'cancel', :back

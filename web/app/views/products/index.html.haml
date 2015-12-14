@@ -1,0 +1,9 @@
+%h1 Products
+- if @products.present?
+  %ul
+    - @products.each do |product|
+      %li= link_to product.name, product
+- else
+  No products
+
+%p= link_to 'Add product', new_product_path

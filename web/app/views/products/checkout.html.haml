@@ -1,0 +1,24 @@
+%h1 Buying '#{@product.name}'
+
+%table{width: '100%', border: 1}
+  %thead
+    %tt
+      %th{style: 'text-align: left;'} Product
+      %th{style: 'width: 10%;'} Price
+  %tbody
+    %tr
+      %td= @product.name
+      %td{style: 'text-align: right;'}= number_to_currency @product.price
+  %tfoot
+    %tr
+      %th{style: 'text-align: right;'} Total:
+      %th{style: 'text-align: right;'}= number_to_currency @product.price
+
+%br/
+
+%div
+  Are you sure?
+  %br/
+  = button_to 'Confirm', buy_product_path(@product), method: :patch, form: { style: 'display: inline-block;' }
+  or
+  = link_to 'cancel', @product

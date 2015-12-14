@@ -1,0 +1,10 @@
+%h1 History
+- if @purchases.present?
+  %ul
+    - @purchases.each do |purchase|
+      %li
+        = link_to purchase.product.name, purchase.product
+        at
+        = localize purchase.created_at, format: :short
+- else
+  No purchases have been made yet

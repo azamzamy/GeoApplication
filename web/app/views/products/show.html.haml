@@ -1,0 +1,21 @@
+%h1= @product.name
+
+%dl
+  %dt
+    %strong Price
+  %dd= number_to_currency @product.price
+  %dt
+    %strong Image
+  %dd= image_tag @product.image_url, width: 250
+  %dt
+    %strong Stock
+  %dd= @product.stock.nonzero? || 'Out of stock'
+
+- unless @product.stock.zero?
+  = link_to 'Buy', checkout_product_path(@product)
+  \|
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Delete', @product, method: :delete, data: { confirm: 'Are you sure?' }
+\|
+= link_to 'Back to list', products_path

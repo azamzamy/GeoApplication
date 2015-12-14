@@ -1,0 +1,16 @@
+- if current_user?
+  Logged in as
+  = link_to current_user.name, current_user
+  &bull;
+  = link_to 'History', history_user_path(current_user)
+  &bull;
+  = link_to 'Logout', session_path(:current), method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  = form_for :session, url: sessions_path, html: { style: 'display: inline-block;' } do |f|
+    = f.label :email
+    = f.text_field :email
+    = f.label :password
+    = f.password_field :password
+    = f.submit 'Login'
+  or
+  = link_to 'register', new_user_path
