@@ -45,7 +45,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:textColor="#FF08221A"
-                android:layout_gravity="center_horizontal"
                 android:text="19 years old. Based in Amsterdam"
                 android:layout_marginBottom="5dp"/>
 

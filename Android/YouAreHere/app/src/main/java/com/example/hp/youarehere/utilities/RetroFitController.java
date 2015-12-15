@@ -1,6 +1,7 @@
 package com.example.hp.youarehere.utilities;
 
 import com.example.hp.youarehere.models.PhotosResponse;
+import com.example.hp.youarehere.models.UserResponse;
 
 import retrofit.Callback;
 import retrofit.http.Body;
@@ -20,6 +21,14 @@ public class RetroFitController {
                 "Authorization: b973904fee30bf0ba30d98caebf8b6ee"
         })
         void getLocationBased(Callback<PhotosResponse> callback);
+    }
+    public interface ShowProfile {
+        @GET("/users")
+        @Headers({
+                "Content-Type: application/json",
+                "Authorization: b973904fee30bf0ba30d98caebf8b6ee"
+        })
+        void getShowProfile(Callback<UserResponse> callback);
     }
 
 }

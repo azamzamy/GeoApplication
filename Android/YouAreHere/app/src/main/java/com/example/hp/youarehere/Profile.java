@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +20,16 @@ import android.widget.TextView;
 
 import com.example.hp.youarehere.adapters.ImagesAdapter;
 import com.example.hp.youarehere.adapters.TimeLineFragmentsAdapter;
+import com.example.hp.youarehere.models.PhotosResponse;
+import com.example.hp.youarehere.models.UserResponse;
 import com.example.hp.youarehere.utilities.Post;
+import com.example.hp.youarehere.utilities.RetroFitController;
+import com.example.hp.youarehere.utilities.RetrofitSingleton;
+import com.squareup.picasso.Picasso;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class Profile extends AppCompatActivity {
 
@@ -31,6 +41,7 @@ public class Profile extends AppCompatActivity {
     TextView profileName;
     TextView profileInfo;
     ImageView menuButton;
+    ImageView profilePicture;
     Context context;
     TimeLineFragmentsAdapter timeLineFragmentsAdapter;
     DrawerLayout drawerLayout;
@@ -43,6 +54,7 @@ public class Profile extends AppCompatActivity {
 
 
         TextView profile = (TextView) findViewById(R.id.profile_text);
+
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,12 +113,15 @@ public class Profile extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         menuButton = (ImageView) findViewById(R.id.menu_button_image);
+        profilePicture = (ImageView) findViewById(R.id.profile_picture);
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
+
+        getShowProfile();
 
 
 
@@ -131,6 +146,24 @@ public class Profile extends AppCompatActivity {
         profileInfo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
 
 
+    }
+    private void getShowProfile() {
+        RetroFitController.ShowProfile UserProfile= RetrofitSingleton.getInstance().create(RetroFitController.ShowProfile.class);
+        UserProfile.getShowProfile(new Callback<UserResponse>() {
+            @Override
+            public void success(UserResponse UserResponse, Response response) {
+                profileName.setText(UserResponse.name);
+                Picasso.with(context).load(UserResponse.pp).into(profilePicture);
+                profileInfo.setText("A "+ UserResponse.gender + " from " + UserResponse.city + " " + UserResponse.country);
+
+                Log.d("Response", "YAAAAAAAY");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
     }
 
 }
