@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hp.youarehere" >
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -46,6 +47,11 @@
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".EditProfile"
+            android:label="@string/title_activity_activity_edit"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 

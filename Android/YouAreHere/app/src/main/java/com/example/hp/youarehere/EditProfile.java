@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,26 +33,26 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class Profile extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity {
 
-    RecyclerView profileRecyclerView;
-    ImagesAdapter profileAdapter;
-    StaggeredGridLayoutManager profileGridLayoutManager;
-    Post[] posts;
-    ViewPager viewPager;
-    TextView profileName;
-    TextView profileInfo;
+    //ImagesAdapter profileAdapter;
+    //StaggeredGridLayoutManager profileGridLayoutManager;
+    //Post[] posts;
+    //ViewPager viewPager;
+    EditText editName;
+    EditText editInfo;
+    Button editNameButton;
+    Button editInfoButton;
     ImageView menuButton;
-    Button editProfileButton;
     ImageView profilePicture;
     Context context;
-    TimeLineFragmentsAdapter timeLineFragmentsAdapter;
+    //TimeLineFragmentsAdapter timeLineFragmentsAdapter;
     DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_edit_profile);
         context = this;
 
 
@@ -61,7 +62,7 @@ public class Profile extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Profile.class);
+                Intent intent = new Intent(context, EditProfile.class);
                 startActivity(intent);
             }
         });
@@ -115,7 +116,6 @@ public class Profile extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         menuButton = (ImageView) findViewById(R.id.menu_button_image);
-        editProfileButton = (Button) findViewById(R.id.edit_profile);
         profilePicture = (ImageView) findViewById(R.id.profile_picture);
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,48 +123,49 @@ public class Profile extends AppCompatActivity {
                 drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
-        editProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, EditProfile.class);
-                startActivity(intent);
-            }
-        });
 
-        getShowProfile();
+        getEditProfile();
 
 
 
-        posts = new Post[8];
-        for (int i=0; i<posts.length; i++) {
-            Post p = new Post(i+"","","");
-            posts[i] = p;
-        }
-
-        profileRecyclerView = (RecyclerView) findViewById(R.id.profile_recycler_view);
-        profileAdapter = new ImagesAdapter(posts, context, 1, Profile.this);
-        profileGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        profileRecyclerView.setAdapter(profileAdapter);
-        profileRecyclerView.setLayoutManager(profileGridLayoutManager);
 
 
         // Text Shit
-        profileInfo = (TextView) findViewById(R.id.profile_info);
-        profileName = (TextView) findViewById(R.id.profile_name);
+        editName = (EditText) findViewById(R.id.profile_name);
+        editInfo = (EditText) findViewById(R.id.profile_info);
 
-        profileName.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
-        profileInfo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
+
+        //by3mel eh da ???
+        //profileName.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
+        //profileInfo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
+
+        //buttons
+        editInfoButton = (Button) findViewById(R.id.edit_info_button);
+        editNameButton = (Button) findViewById(R.id.edit_name_button);
+        editInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        editNameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
     }
-    private void getShowProfile() {
-        RetroFitController.ShowProfile UserProfile= RetrofitSingleton.getInstance().create(RetroFitController.ShowProfile.class);
-        UserProfile.getShowProfile(new Callback<UserResponse>() {
+    private void getEditProfile() {
+        RetroFitController.EditProfile UserProfile= RetrofitSingleton.getInstance().create(RetroFitController.EditProfile.class);
+        UserProfile.getEditProfile(new Callback<UserResponse>() {
             @Override
             public void success(UserResponse UserResponse, Response response) {
-                profileName.setText(UserResponse.name);
+                //edit in api instead of retreiving ???????????
+                editName.setText(UserResponse.name);
                 Picasso.with(context).load(UserResponse.pp).into(profilePicture);
-                profileInfo.setText("A "+ UserResponse.gender + " from " + UserResponse.city + " " + UserResponse.country);
+                editInfo.setText("A "+ UserResponse.gender + " from " + UserResponse.city + " " + UserResponse.country);
 
                 Log.d("Response", "YAAAAAAAY");
             }
@@ -175,5 +176,6 @@ public class Profile extends AppCompatActivity {
             }
         });
     }
+
 
 }

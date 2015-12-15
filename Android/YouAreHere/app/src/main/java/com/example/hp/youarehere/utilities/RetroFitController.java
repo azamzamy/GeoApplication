@@ -30,5 +30,13 @@ public class RetroFitController {
         })
         void getShowProfile(Callback<UserResponse> callback);
     }
+    public interface EditProfile {
+        @GET("/users/edit")
+        @Headers({
+                "Content-Type: application/json",
+                "Authorization: b973904fee30bf0ba30d98caebf8b6ee"
+        })
+        void getEditProfile(Callback<UserResponse> callback);
+    }
 
 }

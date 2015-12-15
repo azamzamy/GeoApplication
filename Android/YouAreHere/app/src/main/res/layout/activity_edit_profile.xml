@@ -29,7 +29,7 @@
                 />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,11 +43,11 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="edit profile"
-                android:id="@+id/edit_profile"
+                android:text="edit name"
+                android:id="@+id/edit_name_button"
                 android:layout_gravity="right" />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,23 +56,26 @@
                 android:text="19 years old. Based in Amsterdam"
                 android:layout_marginBottom="5dp"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/profile_recycler_view"
-                android:layout_width="match_parent"
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="96dp"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                />
+                android:text="edit info"
+                android:id="@+id/edit_info_button"
+                android:layout_gravity="right" />
+
+
+
+            <ImageView
+                android:id="@+id/menu_button_image"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/menu"/>
 
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/menu_button_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="12dp"
-            android:src="@drawable/menu"/>
 
     </RelativeLayout>
 
