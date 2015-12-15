@@ -8,8 +8,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +21,16 @@ import android.widget.TextView;
 
 import com.example.hp.youarehere.adapters.ImagesAdapter;
 import com.example.hp.youarehere.adapters.TimeLineFragmentsAdapter;
+import com.example.hp.youarehere.models.PhotosResponse;
 import com.example.hp.youarehere.utilities.Post;
+import com.example.hp.youarehere.utilities.RetroFitController;
+import com.example.hp.youarehere.utilities.RetrofitSingleton;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class Profile extends AppCompatActivity {
 
@@ -117,10 +128,7 @@ public class Profile extends AppCompatActivity {
         }
 
         profileRecyclerView = (RecyclerView) findViewById(R.id.profile_recycler_view);
-        profileAdapter = new ImagesAdapter(posts, context, 1, Profile.this);
-        profileGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        profileRecyclerView.setAdapter(profileAdapter);
-        profileRecyclerView.setLayoutManager(profileGridLayoutManager);
+
 
 
         // Text Shit
@@ -131,6 +139,27 @@ public class Profile extends AppCompatActivity {
         profileInfo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Raleway-Medium.ttf"));
 
 
+    }
+
+    private void getLocationPhotos() {
+        RetroFitController.locatioBasedPhotos locationPhotos= RetrofitSingleton.getInstance().create(RetroFitController.locatioBasedPhotos.class);
+        locationPhotos.getLocationBased(new Callback<List<PhotosResponse>>() {
+            @Override
+            public void success(List<PhotosResponse> photosResponses, Response response) {
+                Log.d("Response", "YAAAAAAAY");
+                profileAdapter = new ImagesAdapter(photosResponses, context, 1, Profile.this);
+                profileGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                profileRecyclerView.setAdapter(profileAdapter);
+                profileRecyclerView.setLayoutManager(profileGridLayoutManager);
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("Response", "FAIL");
+
+            }
+        });
     }
 
 }

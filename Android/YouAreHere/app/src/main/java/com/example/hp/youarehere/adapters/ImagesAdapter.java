@@ -17,17 +17,19 @@ import com.example.hp.youarehere.CommentsListAdapter;
 import com.example.hp.youarehere.FriendsListAdapter;
 import com.example.hp.youarehere.R;
 import com.example.hp.youarehere.Timeline;
+import com.example.hp.youarehere.models.PhotosResponse;
 import com.example.hp.youarehere.utilities.Post;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ahmedtarek on 11/30/15.
  */
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationViewHolder> {
 
-    Post[] items;
+    List<PhotosResponse> items;
     Context context;
     int version;
     final Activity activity;
@@ -42,7 +44,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
     public ArrayList<String> comments;
 
 
-    public ImagesAdapter(Post[] items, Context context, int version, Activity activity) {
+    public ImagesAdapter(List<PhotosResponse> items, Context context, int version, Activity activity) {
         this.version = version;
         this.items = items;
         this.context = context;
@@ -61,7 +63,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
 
     @Override
     public int getItemCount() {
-        return items.length;
+        return items.size();
     }
 
     @Override
@@ -85,39 +87,33 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
         final CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
 
         holder.commentsList.setAdapter(adapter2);
+        Picasso.with(context).load(items.get(position).image_url).into(holder.image);
 
-        if (position >3 ) {
-            holder.image.setImageResource(R.drawable.background);
-        }
-
-        else if (position == 0) Picasso.with(context).load(R.drawable.test0).into(holder.image);
-        else if (position == 1) Picasso.with(context).load(R.drawable.test1).into(holder.image);
-        else if (position == 2) Picasso.with(context).load(R.drawable.test2).into(holder.image);
-        else if (position == 3) Picasso.with(context).load(R.drawable.test3).into(holder.image);
 
         if (version == 0) {
             holder.location.setText("Rome");
             holder.userName.setText("by Ahmed Tarek");
+            holder.postButton.setOnClickListener(new View.OnClickListener() {
+
+
+                @Override
+                public void onClick(View v) {
+
+                    comments.add(holder.post.getText().toString());
+                    friendNames.add("Zamzamy");
+                    friendImages.add(R.drawable.zamzamy);
+
+                    CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
+
+                    holder.commentsList.setAdapter(adapter2);
+                    adapter2.notifyDataSetChanged();
+
+                }
+            });
         }
 
+        //if (version == )
 
-        holder.postButton.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View v) {
-
-                comments.add(holder.post.getText().toString());
-                friendNames.add("Zamzamy");
-                friendImages.add(R.drawable.zamzamy);
-
-                CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
-
-                holder.commentsList.setAdapter(adapter2);
-                adapter2.notifyDataSetChanged();
-
-            }
-        });
 
 
 
