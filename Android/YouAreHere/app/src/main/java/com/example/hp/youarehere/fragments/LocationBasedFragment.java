@@ -25,6 +25,7 @@ import com.example.hp.youarehere.utilities.RetrofitSingleton;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -58,12 +59,6 @@ public class LocationBasedFragment extends Fragment {
             locationPosts[i] = p;
         }
         locationRecyclerView = (RecyclerView) rootView.findViewById(R.id.location_based_recycler_view);
-        imagesAdapter = new ImagesAdapter(locationPosts, getContext(), 0, getActivity());
-        locationLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        locationRecyclerView.setAdapter(imagesAdapter);
-        locationRecyclerView.setLayoutManager(locationLinearLayoutManager);
-
-
 
 
 
@@ -73,14 +68,20 @@ public class LocationBasedFragment extends Fragment {
 
     private void getLocationPhotos() {
         RetroFitController.locatioBasedPhotos locationPhotos= RetrofitSingleton.getInstance().create(RetroFitController.locatioBasedPhotos.class);
-        locationPhotos.getLocationBased(new Callback<PhotosResponse>() {
+        locationPhotos.getLocationBased(new Callback<List<PhotosResponse>>() {
             @Override
-            public void success(PhotosResponse photosResponse, Response response) {
+            public void success(List<PhotosResponse> photosResponses, Response response) {
                 Log.d("Response", "YAAAAAAAY");
+                Log.d("Response", photosResponses.get(0).image_url);
+                imagesAdapter = new ImagesAdapter(photosResponses, getContext(), 0, getActivity());
+                locationLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                locationRecyclerView.setAdapter(imagesAdapter);
+                locationRecyclerView.setLayoutManager(locationLinearLayoutManager);
             }
 
             @Override
             public void failure(RetrofitError error) {
+                Log.d("Response", "FAIL");
 
             }
         });

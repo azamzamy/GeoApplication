@@ -45,4 +45,13 @@ public class TimeLineFragmentsAdapter extends FragmentStatePagerAdapter {
         // Generate title based on item position
         return tabTitles[position];
     }
+    public double findDistance(double lat1, double lon1, double lat2, double lon2) {
+
+        int R = 3961; //in miles
+        double dlon = lon2 - lon1;
+        double dlat = lat1 - lat2;
+        double a = Math.pow(Math.sin(dlat/2.0), 2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2.0), 2);
+        double c = 2 * a * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
 }

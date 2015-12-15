@@ -11,7 +11,7 @@ import retrofit.RestAdapter;
 public class RetrofitSingleton {
 
     private static RestAdapter restAdapter = null;
-	private static final String ENDPOINT = "http://10.0.2.2:3000/api";
+	private static final String ENDPOINT = "http://10.0.2.2:3000/api";      // ON EMULATOR
 
     private RetrofitSingleton(){
 
