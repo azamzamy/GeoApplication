@@ -46,6 +46,11 @@
             android:name=".Settings"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name=".PhotoActivity"
+            android:label="@string/title_activity_photo"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- The main content view -->
+    <RelativeLayout
+        android:id="@+id/mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/main_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"/>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/friends"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:layout_gravity="top" />
+
+        <ImageView
+            android:id="@+id/menu_button_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="12dp"
+            android:src="@drawable/menu"/>
+    </RelativeLayout>
+
+
+    <!-- The navigation drawer -->
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:id="@+id/drawerPane"
+        android:layout_gravity="start"
+        android:background="#1abc9c"
+        android:padding="10dp">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="#1abc9c"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logo"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/post_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post A photo"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:id="@+id/Explore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:id="@+id/profile_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:id="@+id/Friends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Friends"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:id="@+id/Settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+</android.support.v4.widget.DrawerLayout>
+    <!--</RelativeLayout>-->
