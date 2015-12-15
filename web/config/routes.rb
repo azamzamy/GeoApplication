@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :sessions, only: :create
     resources :comment, only: :index
     resources :photos
-
+    get 'photos/kamolia' => 'photos#LocationBased'
   end
   
   resources :comment
