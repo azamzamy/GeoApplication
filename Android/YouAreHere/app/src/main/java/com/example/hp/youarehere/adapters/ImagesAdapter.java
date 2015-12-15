@@ -98,26 +98,27 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
         if (version == 0) {
             holder.location.setText("Rome");
             holder.userName.setText("by Ahmed Tarek");
+            holder.postButton.setOnClickListener(new View.OnClickListener() {
+
+
+                @Override
+                public void onClick(View v) {
+
+                    comments.add(holder.post.getText().toString());
+                    friendNames.add("Zamzamy");
+                    friendImages.add(R.drawable.zamzamy);
+
+                    CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
+
+                    holder.commentsList.setAdapter(adapter2);
+                    adapter2.notifyDataSetChanged();
+
+                }
+            });
         }
 
 
-        holder.postButton.setOnClickListener(new View.OnClickListener() {
 
-
-            @Override
-            public void onClick(View v) {
-
-                comments.add(holder.post.getText().toString());
-                friendNames.add("Zamzamy");
-                friendImages.add(R.drawable.zamzamy);
-
-                CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
-
-                holder.commentsList.setAdapter(adapter2);
-                adapter2.notifyDataSetChanged();
-
-            }
-        });
 
 
 

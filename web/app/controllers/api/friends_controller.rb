@@ -21,7 +21,7 @@ class Api::FriendsController < Api::BaseController
 		@friendship.user_id = @user.user_id
 		@friend = User.find(params[:friend_id])
 		@friendship.friend_id = @friend.user_id
-		@friendship.isFriend = false
+		@friendship.isFriend = true
 		if @friendship.save
 		
 		respond_to do |format| 
@@ -50,8 +50,19 @@ class Api::FriendsController < Api::BaseController
 	
 	def destroy
 		@friendship = Friendship.where(:user_id=>params[:user_id]).where(:friend_id=>params[:friend_id]).first
-		@friendship.destroy
-		head :no_content
+		if @friendship.destroy
+		@boo = true
+		respond_to do |format| 
+
+      	format.json { render json: @boo }
+      end
+      else
+       @boo = false
+		respond_to do |format| 
+
+      	format.json { render json: @boo }
+		end
+	end
 	end
 
 

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,10 +23,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hp.youarehere.adapters.TimeLineFragmentsAdapter;
+import com.example.hp.youarehere.models.Friendship;
+import com.example.hp.youarehere.models.UserResponse;
+import com.example.hp.youarehere.utilities.RetroFitController;
+import com.example.hp.youarehere.utilities.RetrofitSingleton;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class Friends extends ActionBarActivity {
@@ -33,10 +43,11 @@ public class Friends extends ActionBarActivity {
 
     ListView friends ;
     private FriendsListAdapter adapter2;
-    private int[] images = new int[]{R.drawable.ahmedtarek, R.drawable.hend, R.drawable.kamel, R.drawable.zamzamy};
-    private String [] names = {"Ahmed Tarek", "Hend Hesham", "Abdelrahman Kamel", "Zamzamy"};
+//    private String[] images = new int[]{R.drawable.ahmedtarek, R.drawable.hend, R.drawable.kamel, R.drawable.zamzamy};
+//    private String [] names = {"Ahmed Tarek", "Hend Hesham", "Abdelrahman Kamel", "Zamzamy"};
     private ArrayList<String> friendNames;
-    private ArrayList<Integer> friendImages;
+    private ArrayList<String> friendImages;
+    private ArrayList<Integer> friendIds;
     Context context;
 
 
@@ -57,15 +68,37 @@ public class Friends extends ActionBarActivity {
 
         friendNames = new ArrayList<String>();
 
-        friendImages = new ArrayList<Integer>();
-        int i = 3;
-        while (i >= 0) {
-            friendNames.add(names[i]);
-            friendImages.add(images[i]);
-            i--;
-        }
+        friendImages = new ArrayList<String>();
+        friendIds = new ArrayList<Integer>();
 
-        adapter2 = new FriendsListAdapter(Friends.this, friendNames, friendImages);
+        RetroFitController.ViewFriends viewfr = RetrofitSingleton.getInstance().create(RetroFitController.ViewFriends.class);
+        viewfr.viewFriends(1, new Callback<List<UserResponse>>() {
+
+
+            @Override
+            public void success(List<UserResponse> friends, Response response) {
+                int s = friends.size();
+                for (int i = 0; i < s; i++) {
+                            friendImages.add(friends.get(i).pp);
+                            friendNames.add(friends.get(i).name);
+                            friendIds.add(friends.get(i).id);
+                    Log.d("Response:::::::::::::::", friends.get(i).id+"");
+
+
+                        }
+
+                }
+
+
+            @Override
+                public void failure(RetrofitError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+            });
+
+
+        adapter2 = new FriendsListAdapter(Friends.this, friendNames, friendImages, friendIds, 1);
         friends.setAdapter(adapter2);
 
         TextView AddFriends = (TextView) findViewById(R.id.AddFriends);
@@ -88,6 +121,16 @@ public class Friends extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Profile.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView users = (TextView) findViewById(R.id.users);
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Users.class);
                 startActivity(intent);
             }
         });
