@@ -12,12 +12,11 @@ Rails.application.routes.draw do
   # API
   namespace :api, defaults: { format: :json } do
     resources :sessions, only: :create
-    resources :users do
-    resources :photos do
+    resources :users 
+    resources :photos 
     resources :comment, only: :index
-    end
-    end
-
+    resources :photos
+    
   end
   
   resources :comment
