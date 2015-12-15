@@ -99,6 +99,8 @@
                 android:layout_gravity="center_horizontal"
                 />
 
+
+
             <TextView
                 android:id="@+id/Explore"
                 android:layout_width="wrap_content"

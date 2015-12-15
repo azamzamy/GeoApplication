@@ -9,8 +9,10 @@ import java.util.List;
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
+import retrofit.http.Header;
 import retrofit.http.Headers;
 import retrofit.http.POST;
+import retrofit.http.Path;
 
 /**
  * Created by ahmedtarek on 12/15/15.
@@ -26,11 +28,10 @@ public class RetroFitController {
         void getLocationBased(Callback<List<PhotosResponse>> photos);
     }
     public interface commentValContent{
-        @GET("api/comment")
+        @GET("/photos/{photoId}/comment")
         @Headers({
-                "Content-Type: application/json",
-                "Authorization: b973904fee30bf0ba30d98caebf8b6ee"
+                "Content-Type: application/json"
         })
-        void getCommentVal(Callback<CommentResponse> callback);
+        void getCommentVal(@Path("photoId") int photoId ,Callback<ArrayList<CommentResponse>> callback);
     }
 }

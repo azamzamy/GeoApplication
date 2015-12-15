@@ -1,5 +1,5 @@
 class Api::CommentController < Api::BaseController
-	before_action :authenticate_user!, only: :buy
+	before_action :authenticate_user!, only: :create
 
 	def index
 		@photo = Photo.find(params[:photo_id])

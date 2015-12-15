@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   # API
   namespace :api, defaults: { format: :json } do
     resources :sessions, only: :create
-    resources :users do
+    resources :users 
     resources :photos do
     resources :comment, only: :index
-    end
     end
 
     resources :photos
@@ -24,7 +23,6 @@ Rails.application.routes.draw do
   
   resources :comment
 
-  
   
   root 'comment#index'
 end

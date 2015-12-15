@@ -2,6 +2,7 @@ package com.example.hp.youarehere.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.hp.youarehere.CommentsListAdapter;
 import com.example.hp.youarehere.FriendsListAdapter;
+import com.example.hp.youarehere.PhotoActivity;
 import com.example.hp.youarehere.R;
 import com.example.hp.youarehere.Timeline;
 import com.example.hp.youarehere.models.PhotosResponse;
@@ -67,7 +69,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
     }
 
     @Override
-    public void onBindViewHolder(final LocationViewHolder holder, int position) {
+    public void onBindViewHolder(final LocationViewHolder holder, final int position) {
 
 
         friendNames = new ArrayList<String>();
@@ -83,6 +85,16 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.LocationVi
             i--;
         }
 
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                long photoId = items.get(position).id;
+                Intent i = new Intent(context, PhotoActivity.class);
+                i.putExtra("photo_id", photoId+"");
+                i.putExtra("photo_url", items.get(position).image_url);
+                activity.startActivity(i);
+            }
+        });
 
         final CommentsListAdapter adapter2 = new CommentsListAdapter(activity, friendNames, friendImages, comments);
 
