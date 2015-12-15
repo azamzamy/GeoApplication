@@ -12,17 +12,18 @@ Rails.application.routes.draw do
   # API
   namespace :api, defaults: { format: :json } do
     resources :sessions, only: :create
-    resources :users do
+    resources :users
     resources :photos do
     resources :comment, only: :index
-    end
-    end  
-
+    end 
+    get 'friends' => 'friends#index'
+    get 'friends/:user_id' => 'friends#show'
+    
   end
+
   
   resources :comment
 
-  
   
   root 'comment#index'
 end
