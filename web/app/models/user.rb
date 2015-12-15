@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   # Fields
 
   has_many :photos, dependent: :destroy
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   attr_accessor :password
   
   # Validations
@@ -39,4 +43,6 @@ class User < ActiveRecord::Base
   def encrypt_password
     self.encrypted_password = Digest::MD5.hexdigest(self.password)
   end
+
+
 end

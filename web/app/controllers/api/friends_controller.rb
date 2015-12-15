@@ -1,9 +1,10 @@
-class Api::CommentController < Api::BaseController
+class Api::FriendsController < Api::BaseController
 	before_action :authenticate_user!, only: :buy
 
 	def index
-	    respond_with @comments = Comment.all
+	   respond_with @friends = Friendship.all 
 	end
+
 
 	protected
   	def comment_params
