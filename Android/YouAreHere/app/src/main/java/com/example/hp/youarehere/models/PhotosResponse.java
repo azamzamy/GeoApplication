@@ -7,7 +7,7 @@ public class PhotosResponse {
     int id;
     String created_at;
     String image_url;
-    String user_id;
+    int user_id;
     double lat;
     String update_at;
     String upload_date;

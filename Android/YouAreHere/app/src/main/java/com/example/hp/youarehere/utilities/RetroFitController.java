@@ -1,5 +1,6 @@
 package com.example.hp.youarehere.utilities;
 
+import com.example.hp.youarehere.models.CommentResponse;
 import com.example.hp.youarehere.models.PhotosResponse;
 
 import retrofit.Callback;
@@ -21,5 +22,12 @@ public class RetroFitController {
         })
         void getLocationBased(Callback<PhotosResponse> callback);
     }
-
+    public interface commentValContent{
+        @GET("api/comment")
+        @Headers({
+                "Content-Type: application/json",
+                "Authorization: b973904fee30bf0ba30d98caebf8b6ee"
+        })
+        void getCommentVal(Callback<CommentResponse> callback);
+    }
 }

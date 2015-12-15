@@ -11,6 +11,7 @@ gem 'dynamic_form'
 
 gem 'jquery-rails'
 gem 'rabl'
+gem 'tzinfo-data'
 
 group :development do
   gem 'byebug'
